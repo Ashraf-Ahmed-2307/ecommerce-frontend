@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product</title>
+</head>
+
+<body>
+    <a href="index.html">Back to home</a>
+
+    <h1>Search Product</h1>
+
+    <form>
+        Product ID<input type="text" id="productid"><br>
+        <button type="button" onclick="searchProduct()">Search</button>
+    </form>
+
+    <p id="product-search-status"></p>
+
+    <p id="product-details" hidden>
+        Product ID: <span id="result-id"></span><br />
+        Name: <span id="result-name"></span><br />
+        Brand: <span id="result-brand"></span><br />
+        Description: <span id="result-description"></span><br />
+        Status: <span id="result-status"></span>
+    </p>
+
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

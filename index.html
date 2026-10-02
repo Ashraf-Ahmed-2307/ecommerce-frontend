@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/custom.css" />
+    <title>Ecommerce Store</title>
 </head>
-<body>
-    <h2>Welcome</h2>
+
+<body onload="loadCategories()">
+    <h1>Ecommerce Store</h1>
+
+    <h2>Shop by category</h2>
+    <p id="category-status"></p>
+    <ul id="category-list"></ul>
+
+    <h2>Product management</h2>
+    <a href="add-product-form.html">Add Product</a><br>
+    <a href="search-product-form.html">Search Product</a><br>
+    <a href="view-all-products.html">View All Products</a><br>
+    <a href="update-product-form.html">Update Product Name</a><br>
+    <a href="delete-product-form.html">Delete Product</a><br>
 
     <script src="js/custom.js"></script>
 </body>
+
 </html>

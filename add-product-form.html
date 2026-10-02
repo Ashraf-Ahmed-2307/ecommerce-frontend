@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+</head>
+
+<body onload="loadCategoryOptions()">
+    <a href="index.html">Back to home</a>
+
+    <h1>Add Product</h1>
+
+    <form>
+        Name<input type="text" name="name"><br>
+        Brand<input type="text" name="brand"><br>
+        Description<input type="text" name="description"><br>
+        Status<select name="status">
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Draft</option>
+            <option>Discontinued</option>
+        </select><br>
+        Categories
+        <div id="category-options"></div>
+        <p id="category-options-status"></p>
+        <button type="button" onclick="addProduct()">Add</button>
+    </form>
+
+    <p id="add-product-status"></p>
+
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
