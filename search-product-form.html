@@ -1,31 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <a href="index.html">Back to home</a>
+    <nav class="navbar navbar-expand-lg navbar-dark store-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Ecommerce Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Manage products</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="add-product-form.html">Add Product</a></li>
+                        <li><a class="dropdown-item" href="add-product-image-form.html">Add Product Image</a></li>
+                        <li><a class="dropdown-item active" href="search-product-form.html">Search Product</a></li>
+                        <li><a class="dropdown-item" href="view-all-products.html">View All Products</a></li>
+                        <li><a class="dropdown-item" href="update-product-form.html">Update Product Name</a></li>
+                        <li><a class="dropdown-item" href="delete-product-form.html">Delete Product</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <h1>Search Product</h1>
+    <header class="hero text-white py-4 py-lg-5">
+        <div class="container">
+            <h1 class="h2 fw-bold mb-0">Search Product</h1>
+            <p class="mb-0 mt-1 text-white-50">Look up a product by its ID.</p>
+        </div>
+    </header>
 
-    <form>
-        Product ID<input type="text" id="productid"><br>
-        <button type="button" onclick="searchProduct()">Search</button>
-    </form>
+    <main class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card form-card shadow-sm">
+                    <div class="card-body p-4">
+                        <form onsubmit="return false;">
+                            <label class="form-label" for="productid">Product ID</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="productid">
+                                <button type="button" class="btn btn-primary" onclick="searchProduct()">Search</button>
+                            </div>
+                        </form>
+                        <div id="product-search-status" class="status alert alert-info mt-3" role="status"></div>
+                        <div id="product-details" class="mt-4" hidden>
+                            <div class="d-flex justify-content-between align-items-start gap-3">
+                                <h2 id="result-name" class="h4 mb-1"></h2>
+                                <span id="result-status" class="badge"></span>
+                            </div>
+                            <p class="text-muted mb-3">Product ID: <span id="result-id"></span> &middot; Brand: <span id="result-brand"></span></p>
+                            <p id="result-description"></p>
+                            <h3 class="h6 mt-4">Images</h3>
+                            <p class="small text-muted">The outlined image is the cover image.</p>
+                            <div id="result-images" class="d-flex flex-wrap gap-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <p id="product-search-status"></p>
-
-    <p id="product-details" hidden>
-        Product ID: <span id="result-id"></span><br />
-        Name: <span id="result-name"></span><br />
-        Brand: <span id="result-brand"></span><br />
-        Description: <span id="result-description"></span><br />
-        Status: <span id="result-status"></span>
-    </p>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
 

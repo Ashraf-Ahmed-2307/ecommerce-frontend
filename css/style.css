@@ -1,0 +1,151 @@
+/* Colour theme: indigo (primary) with an amber accent. Bootstrap does the layout. */
+:root {
+    --store-primary: #4f46e5;
+    --store-primary-dark: #3730a3;
+    --store-ink: #1e1b4b;
+    --store-accent: #f59e0b;
+    --store-bg: #f5f6fb;
+
+    --bs-primary: #4f46e5;
+    --bs-primary-rgb: 79, 70, 229;
+    --bs-link-color: #4f46e5;
+    --bs-link-color-rgb: 79, 70, 229;
+    --bs-link-hover-color: #3730a3;
+    --bs-link-hover-color-rgb: 55, 48, 163;
+}
+
+body {
+    background-color: var(--store-bg);
+    color: #25234a;
+}
+
+/* ---------- navigation and page header ---------- */
+.store-navbar {
+    background: linear-gradient(90deg, var(--store-ink), var(--store-primary-dark));
+}
+
+.store-navbar .nav-link.active {
+    color: var(--store-accent);
+    font-weight: 600;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--store-primary-dark), var(--store-primary));
+}
+
+/* ---------- buttons and form controls ---------- */
+.btn-primary {
+    --bs-btn-bg: var(--store-primary);
+    --bs-btn-border-color: var(--store-primary);
+    --bs-btn-hover-bg: var(--store-primary-dark);
+    --bs-btn-hover-border-color: var(--store-primary-dark);
+    --bs-btn-active-bg: var(--store-primary-dark);
+    --bs-btn-active-border-color: var(--store-primary-dark);
+    --bs-btn-disabled-bg: var(--store-primary);
+    --bs-btn-disabled-border-color: var(--store-primary);
+    --bs-btn-focus-shadow-rgb: 79, 70, 229;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #a5a1f2;
+    box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--store-primary);
+    border-color: var(--store-primary);
+}
+
+.form-check-input:focus {
+    border-color: #a5a1f2;
+    box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+}
+
+.form-card {
+    border: 0;
+    border-radius: 0.9rem;
+}
+
+/* An empty status message shows nothing. */
+.status:empty {
+    display: none;
+}
+
+/* ---------- category cards ---------- */
+.category-card {
+    border: 0;
+    border-radius: 0.9rem;
+    border-top: 4px solid var(--store-primary);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(30, 27, 75, 0.15) !important;
+}
+
+.category-badge {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: rgba(79, 70, 229, 0.12);
+    color: var(--store-primary);
+}
+
+/* ---------- product cards, thumbnails and gallery ---------- */
+.product-card {
+    border: 0;
+    border-radius: 0.9rem;
+    overflow: hidden;
+}
+
+.product-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-placeholder {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8e9f5;
+    color: #6b6f8d;
+}
+
+.brand-badge {
+    background: rgba(245, 158, 11, 0.18);
+    color: #92400e;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.thumb {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.gallery-image {
+    width: 150px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.cover-image {
+    outline: 3px solid var(--store-accent);
+}

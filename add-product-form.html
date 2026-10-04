@@ -1,34 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body onload="loadCategoryOptions()">
-    <a href="index.html">Back to home</a>
+    <nav class="navbar navbar-expand-lg navbar-dark store-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Ecommerce Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Manage products</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item active" href="add-product-form.html">Add Product</a></li>
+                        <li><a class="dropdown-item" href="add-product-image-form.html">Add Product Image</a></li>
+                        <li><a class="dropdown-item" href="search-product-form.html">Search Product</a></li>
+                        <li><a class="dropdown-item" href="view-all-products.html">View All Products</a></li>
+                        <li><a class="dropdown-item" href="update-product-form.html">Update Product Name</a></li>
+                        <li><a class="dropdown-item" href="delete-product-form.html">Delete Product</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <h1>Add Product</h1>
+    <header class="hero text-white py-4 py-lg-5">
+        <div class="container">
+            <h1 class="h2 fw-bold mb-0">Add Product</h1>
+            <p class="mb-0 mt-1 text-white-50">Create a product and optionally place it in one or more categories.</p>
+        </div>
+    </header>
 
-    <form>
-        Name<input type="text" name="name"><br>
-        Brand<input type="text" name="brand"><br>
-        Description<input type="text" name="description"><br>
-        Status<select name="status">
-            <option>Active</option>
-            <option>Inactive</option>
-            <option>Draft</option>
-            <option>Discontinued</option>
-        </select><br>
-        Categories
-        <div id="category-options"></div>
-        <p id="category-options-status"></p>
-        <button type="button" onclick="addProduct()">Add</button>
-    </form>
+    <main class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card form-card shadow-sm">
+                    <div class="card-body p-4">
+                        <form onsubmit="return false;">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-name">Name</label>
+                                <input type="text" class="form-control" id="product-name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="product-brand">Brand</label>
+                                <input type="text" class="form-control" id="product-brand" name="brand">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="product-description">Description</label>
+                                <textarea class="form-control" id="product-description" name="description" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="product-status">Status</label>
+                                <select class="form-select" id="product-status" name="status">
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                    <option>Draft</option>
+                                    <option>Discontinued</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label d-block">Categories</label>
+                                <div id="category-options"></div>
+                                <div id="category-options-status" class="status alert alert-info mt-2" role="status"></div>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="addProduct()">Add Product</button>
+                        </form>
+                        <div id="add-product-status" class="status alert alert-info mt-3" role="status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <p id="add-product-status"></p>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
 
