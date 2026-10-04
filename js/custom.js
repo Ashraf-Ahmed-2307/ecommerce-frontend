@@ -22,7 +22,7 @@ async function loadCategoryOptions() {
     status.textContent = 'Loading categories...';
 
     try {
-        const response = await fetch('${contextPath}/rest/api/v1/catalogues/categories');
+        const response = await fetch(`${contextPath}/rest/api/v1/catalogues/categories`);
 
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}`);
@@ -556,5 +556,93 @@ async function loadCategoryProducts() {
     } catch (error) {
         status.className = statusError;
         status.textContent = `Could not load products: ${error.message}`;
+    }
+}
+
+// POST /auth/register: create a customer account.
+async function signUp() {
+    const form = document.getElementById('sign-up-form');
+    const status = document.getElementById('sign-up-status');
+    const password = document.getElementById('signup-password').value;
+    const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+    if (password !== confirmPassword) {
+        status.className = statusError;
+        status.textContent = 'The passwords do not match.';
+        return;
+    }
+
+    status.className = statusInfo;
+    status.textContent = 'Creating your account...';
+
+    try {
+        const response = await fetch(`${contextPath}/rest/api/v1/auth/register`, {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(form))
+        });
+
+        if (response.status === 201) {
+            status.className = statusSuccess;
+            status.textContent = 'Account created. Taking you to the sign in page...';
+            form.reset();
+
+            setTimeout(() => {
+                window.location.href = 'customer-sign-in.html';
+            }, 1500);
+            return;
+        }
+
+        // 400 (invalid details) and 409 (username or email already used) carry a readable message.
+        if (response.status === 400 || response.status === 409) {
+            status.className = statusError;
+            status.textContent = (await response.text()).trim();
+            return;
+        }
+
+        throw new Error(`HTTP ${response.status}`);
+    } catch (error) {
+        status.className = statusError;
+        status.textContent = `Request failed: ${error.message}`;
+    }
+}
+
+// POST /auth/login: sign in; the server keeps the user in a session cookie.
+async function signIn() {
+    const form = document.getElementById('sign-in-form');
+    const status = document.getElementById('sign-in-status');
+
+    status.className = statusInfo;
+    status.textContent = 'Signing in...';
+
+    try {
+        const response = await fetch(`${contextPath}/rest/api/v1/auth/login`, {
+            method: 'POST',
+            credentials: 'include',
+            body: new URLSearchParams(new FormData(form))
+        });
+
+        // One generic message for every kind of failed login.
+        if (response.status === 401) {
+            status.className = statusError;
+            status.textContent = 'Invalid username or password.';
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const user = await response.json();
+
+        status.className = statusSuccess;
+        status.textContent = `Welcome back, ${user.firstName}! Taking you to the store...`;
+        form.reset();
+
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1000);
+    } catch (error) {
+        status.className = statusError;
+        status.textContent = `Request failed: ${error.message}`;
     }
 }
